@@ -1,2 +1,2 @@
 #!/bin/bash
-PYFILE=$(cat <<EOF print("Best School") EOF) export PYFILE=main.py
+python3 main.py
