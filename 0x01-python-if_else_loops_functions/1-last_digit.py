@@ -5,7 +5,7 @@ number = random.randint(-10000, 10000)
 lastd = abs(number) % 10
 
 if number < 0:
-    lastd = (abs(number) % 10) * -1  #abs returns absolute value of a number
+    lastd = (abs(number) % 10) * -1  # abs returns absolute value of a number
 else:
     lastd = number % 10
 
