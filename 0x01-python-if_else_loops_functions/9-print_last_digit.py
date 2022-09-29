@@ -5,4 +5,4 @@ def print_last_digit(number):
         dig = (abs(number) % 10) * -1
     else:
         dig = number % 10
-    print(dig)
+    print("{}".format(dig), end="")
