@@ -1,14 +1,12 @@
 #!/usr/bin/python3
-"""Defines a class MyInt that inherits from int."""
+'''Module for MyInt class.'''
 
 
 class MyInt(int):
-    """Invert int operators == and !=."""
+    def __eq__(self, other):
+        '''Override equals, inverting it.'''
+        return int(self) != int(other)
 
-    def __eq__(self, value):
-        """Override == opeartor with != behavior."""
-        return self.real != value
-
-    def __ne__(self, value):
-        """Override != operator with == behavior."""
-        return self.real == value
+    def __ne__(self, other):
+        '''Override not-equals, inverting it.'''
+        return int(self) == int(other)

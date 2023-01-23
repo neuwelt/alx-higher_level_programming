@@ -1,24 +1,14 @@
 #!/usr/bin/node
-
+// makes get request for SW movie id
 const request = require('request');
-const url = process.argv[2];
-
-request(url, function (err, response, body) {
-  if (err) {
-    console.log(err);
-  } else if (response.statusCode === 200) {
-    const films = JSON.parse(body).results;
-    let count = 0;
-    for (const filmIndex in films) {
-      const filmChars = films[filmIndex].characters;
-      for (const charIndex in filmChars) {
-        if (filmChars[charIndex].includes('18')) {
-          count++;
-        }
-      }
+const find = '/18/';
+request(process.argv[2], function (error, response, body) {
+  if (error) throw new Error(error);
+  let num = 0;
+  for (const film of JSON.parse(body).results) {
+    for (const character of film.characters) {
+      num += (character.includes(find) ? 1 : 0);
     }
-    console.log(count);
-  } else {
-    console.log('An error occured. Status code: ' + response.statusCode);
   }
+  console.log(num);
 });

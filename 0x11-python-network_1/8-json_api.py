@@ -1,22 +1,17 @@
 #!/usr/bin/python3
-""" script that takes in a letter and sends a POST request to
-    http://0.0.0.0:5000/search_user with the letter as a parameter
-"""
-if __name__ == '__main__':
-    import sys
-    import requests
+""" Uses requests module. Prints error code"""
+import requests
+from sys import argv
 
-    q = ''
-    if len(sys.argv) > 1:
-        q = sys.argv[1]
-    payload = {'q': q}
-    url = 'http://0.0.0.0:5000/search_user'
-
+if __name__ == "__main__":
+    url = "http://0.0.0.0:5000/search_user"
+    data = {"q": argv[1][0] if len(argv) > 1 else ""}
+    response = requests.post(url, data=data)
     try:
-        response = requests.post(url, data=payload).json()
-        if response:
-            print('[{}] {}'.format(response['id'], response['name']))
+        d = response.json()
+        if not d:
+            print("No result")
         else:
-            print('No result')
+            print("[{}] {}".format(d.get("id"), d.get("name")))
     except ValueError:
-        print('Not a valid JSON')
+        print("Not a valid JSON")

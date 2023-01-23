@@ -1,22 +1,28 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class."""
+'''Module for Rectangle class.'''
 
 
 class Rectangle:
-    """Represent a rectangle."""
+    '''This class defines a simple Rectangle.'''
 
     def __init__(self, width=0, height=0):
-        """Initialize a new Rectangle.
+        '''Constructor.
+
         Args:
-            width (int): The width of the new rectangle.
-            height (int): The height of the new rectangle.
-        """
+            width: The width of rectangle.
+            height: The height of rectangle.
+        '''
         self.width = width
         self.height = height
 
     @property
     def width(self):
-        """Get/set the width of the Rectangle."""
+        '''Property for the width of the rectangle.
+
+        Raises:
+            TypeError: If width is not an integer.
+            ValueError: If width is less than 0.
+        '''
         return self.__width
 
     @width.setter
@@ -29,7 +35,12 @@ class Rectangle:
 
     @property
     def height(self):
-        """Get/set the height of the Rectangle."""
+        '''Property for the height of the rectangle.
+
+        Raises:
+            TypeError: If height is not an integer.
+            ValueError: If height is less than 0.
+        '''
         return self.__height
 
     @height.setter
@@ -41,25 +52,17 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """Return the area of the Rectangle."""
-        return (self.__width * self.__height)
+        '''Returns area of this rectangle.'''
+        return self.width * self.height
 
     def perimeter(self):
-        """Return the perimeter of the Rectangle."""
-        if self.__width == 0 or self.__height == 0:
-            return (0)
-        return ((self.__width * 2) + (self.__height * 2))
+        '''Returns perimeter of this rectangle.'''
+        if not self.width or not self.height:
+            return 0
+        return (self.width + self.height) * 2
 
     def __str__(self):
-        """Return the printable representation of the Rectangle.
-        Represents the rectangle with the # character.
-        """
-        if self.__width == 0 or self.__height == 0:
-            return ("")
-
-        rect = []
-        for i in range(self.__height):
-            [rect.append('#') for j in range(self.__width)]
-            if i != self.__height - 1:
-                rect.append("\n")
-        return ("".join(rect))
+        '''Returns string representation.'''
+        if not self.width or not self.height:
+            return ""
+        return (("#" * self.width + "\n") * self.height)[:-1]

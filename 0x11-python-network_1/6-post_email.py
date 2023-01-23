@@ -1,11 +1,8 @@
 #!/usr/bin/python3
-""" script that takes in a URL and an email address, sends a POST request
-    to the passed URL
-"""
-if __name__ == '__main__':
-    import sys
-    import requests
+""" Uses requests module to get header info"""
+import requests
+from sys import argv
 
-    payload = {'email': sys.argv[2]}
-    response = requests.post(sys.argv[1], data=payload)
+if __name__ == "__main__":
+    response = requests.post(argv[1], data={'email': argv[2]})
     print(response.text)

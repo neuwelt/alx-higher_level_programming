@@ -1,4 +1,8 @@
--- script that creates the database hbtn_0d_usa and the table states (in the database hbtn_0d_usa)
+-- States table
+-- create db
 CREATE DATABASE IF NOT EXISTS hbtn_0d_usa;
-USE hbtn_0d_usa;
-CREATE TABLE IF NOT EXISTS hbtn_0d_usa.states (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(256) NOT NULL);
+-- create table
+CREATE TABLE IF NOT EXISTS hbtn_0d_usa.states (
+    id INT UNIQUE AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL
+) ENGINE=INNODB;

@@ -1,5 +1,5 @@
 #!/usr/bin/node
-
-exports.nbOccurences = function (list, searchElement) {
-  return list.reduce((count, current) => current === searchElement ? count + 1 : count, 0);
+// counts number of occurences of element in list
+exports.nbOccurences = function (list, element) {
+  return list.filter(x => x === element).length;
 };

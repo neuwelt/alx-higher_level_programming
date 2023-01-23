@@ -1,22 +1,32 @@
 #!/usr/bin/node
-
-module.exports = class Rectangle {
+// Checked Rectangle Class with print(), rotate(), double()
+class Rectangle {
   constructor (w, h) {
-    if (w > 0 && h > 0) { 
-	    [this.width, this.height] = [w, h]; 
+    if ((w = parseInt(w)) && w > 0 &&
+        (h = parseInt(h)) && h > 0) {
+      this.width = w;
+      this.height = h;
     }
   }
 
   print () {
-    for (let i = 0; i < this.height; i++) 
-	  console.log('X'.repeat(this.width));
+    // prints width & height shape with X
+    console.log(('X'.repeat(this.width) + '\n').repeat(this.height).split('')
+      .slice(0, -1).join(''));
   }
 
   rotate () {
-    [this.width, this.height] = [this.height, this.width];
+    // switches width and height
+    this.width += this.height;
+    this.height = this.width - this.height;
+    this.width -= this.height;
   }
 
   double () {
-    [this.width, this.height] = [this.width * 2, this.height * 2];
+    // doubles width and height
+    this.width *= 2;
+    this.height *= 2;
   }
-};
+}
+
+module.exports = Rectangle;
